@@ -122,9 +122,9 @@ div#toptitle + h2, div#toptitle + h3 {
 
 .profile-links {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: center;
-	gap: 0.7em 1.6em;
+	column-gap: 1.8em;
 }
 
 .profile-link,
@@ -135,6 +135,10 @@ div#toptitle + h2, div#toptitle + h3 {
 	white-space: nowrap;
 }
 
+.profile-cv {
+	flex: 0 0 auto;
+}
+
 .profile-link img,
 .profile-cv img {
 	flex: 0 0 auto;
@@ -143,10 +147,26 @@ div#toptitle + h2, div#toptitle + h3 {
 .profile-cv-label {
 	color: #333333;
 	font-weight: bold;
+	margin-right: 0.15em;
 }
 
-.profile-link-separator {
-	color: #aaaaaa;
+.cv-language {
+	padding: 0.12em 0.55em;
+	border: 1px solid #cbd5e1;
+	border-radius: 0.25em;
+	background: #f7f9fc;
+}
+
+.cv-language:hover {
+	border: 1px solid #527bbd;
+	background: #eef4fb;
+}
+
+@media (max-width: 700px) {
+	.profile-links {
+		flex-wrap: wrap;
+		row-gap: 0.8em;
+	}
 }
 
 div#subtitle {
