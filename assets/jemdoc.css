@@ -120,6 +120,35 @@ div#toptitle + h2, div#toptitle + h3 {
 	margin-top: 0em;
 }
 
+.profile-links {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.7em 1.6em;
+}
+
+.profile-link,
+.profile-cv {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	white-space: nowrap;
+}
+
+.profile-link img,
+.profile-cv img {
+	flex: 0 0 auto;
+}
+
+.profile-cv-label {
+	color: #333333;
+	font-weight: bold;
+}
+
+.profile-link-separator {
+	color: #aaaaaa;
+}
+
 div#subtitle {
 	margin-top: 0.0em;
 	margin-bottom: 0.0em;
@@ -195,6 +224,12 @@ div#footer-text {
 	padding-bottom: 10px;
 }
 
+.visitor-map {
+	margin-top: 1.5em;
+	min-height: 180px;
+	text-align: center;
+}
+
 ul, ol, dl {
 	margin-top: 0.2em;
 	padding-top: 0;
@@ -238,6 +273,68 @@ ol {
 
 li p, dd p {
 	margin-bottom: 0.3em;
+}
+
+/* News */
+.news-list {
+	list-style: none;
+	margin: 0.2em 0 1em;
+	padding: 0;
+}
+
+.news-list li {
+	display: grid;
+	grid-template-columns: 6em minmax(0, 1fr);
+	column-gap: 1em;
+	margin: 0;
+	padding: 0.65em 0;
+	border-bottom: 1px solid #e5e5e5;
+	line-height: 1.45;
+}
+
+.news-list li:first-child {
+	border-top: 1px solid #e5e5e5;
+}
+
+.news-list time,
+.news-list .news-date {
+	color: #666666;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.news-tag {
+	display: inline-block;
+	margin-right: 0.45em;
+	padding: 0.08em 0.5em;
+	border-radius: 0.25em;
+	font-family: Arial, sans-serif;
+	font-size: 78%;
+	font-weight: bold;
+	line-height: 1.5;
+	vertical-align: 0.08em;
+}
+
+.news-tag-publication {
+	color: #315f99;
+	background: #eaf2fb;
+}
+
+.news-tag-challenge {
+	color: #8a5a13;
+	background: #fff1d6;
+}
+
+.news-tag-update {
+	color: #3d7045;
+	background: #e9f5eb;
+}
+
+@media (max-width: 600px) {
+	.news-list li {
+		grid-template-columns: 1fr;
+		row-gap: 0.25em;
+	}
 }
 
 
