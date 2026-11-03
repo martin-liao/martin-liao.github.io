@@ -7,24 +7,22 @@
   var siteId = container.getAttribute("data-site-id");
   var map = document.getElementById("visitor-map-canvas");
   var markers = document.getElementById("visitor-map-markers");
-  var status = document.getElementById("visitor-map-status");
   var details = document.getElementById("visitor-map-details");
   var locations = document.getElementById("visitor-map-locations");
   var groups = [];
   var receivedData = false;
 
-  function setStatus(state, message) {
+  function setStatus(state) {
     container.setAttribute("data-state", state);
-    status.textContent = message;
   }
 
   function unavailable() {
     if (!receivedData) {
-      setStatus("unavailable", "Visitor locations are temporarily unavailable. Try reloading the page.");
+      setStatus("unavailable");
     }
   }
 
-  setStatus("loading", "Loading visitor locations…");
+  setStatus("loading");
   var timeout = window.setTimeout(unavailable, 10000);
 
   function countryName(countryCode) {
@@ -83,7 +81,7 @@
   }
 
   function diameter(count) {
-    return Math.min(32, 14 + Math.log(count) / Math.LN2 * 5);
+    return Math.min(18, 8 + Math.log(count) / Math.LN2 * 2);
   }
 
   // Merge overlapping circles at the rendered size. The details retain each
@@ -135,7 +133,6 @@
       marker.style.top = point.y * 100 + "%";
       marker.style.width = size + "px";
       marker.style.height = size + "px";
-      marker.textContent = point.count;
       marker.title = point.labels.join("; ");
       fragment.appendChild(marker);
     });
@@ -153,10 +150,8 @@
     window.clearTimeout(timeout);
     receivedData = true;
     groups = groupVisitors(points);
-    var count = 0;
     var fragment = document.createDocumentFragment();
     groups.forEach(function (point) {
-      count += point.count;
       var item = document.createElement("li");
       var name = document.createElement("span");
       var visits = document.createElement("span");
@@ -170,10 +165,7 @@
     locations.appendChild(fragment);
     details.hidden = !groups.length;
     renderMarkers();
-    setStatus(count ? "ready" : "empty", count
-      ? count + " recent visitor " + (count === 1 ? "record" : "records") + " across " +
-        groups.length + (groups.length === 1 ? " location." : " locations.")
-      : "No recent visitor locations are available yet.");
+    setStatus(groups.length ? "ready" : "empty");
   }
 
   if (window.ResizeObserver) {
