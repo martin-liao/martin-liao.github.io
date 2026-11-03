@@ -239,14 +239,20 @@
       </div>
       © Youqi Liao
 
-      <div class="visitor-map" aria-label="Live visitor map">
-        <script id="_waumly">
-          var _wau = window._wau || [];
-          var _wau_opt = { target: "_blank", fbase: false };
-          _wau.push(["map", "wsgsnf13zb", "mly", "360", "180", "natural", "default-red"]);
-        </script>
-        <script async src="https://waust.at/m.js"></script>
-        <noscript><a href="https://whos.amung.us/stats/wsgsnf13zb/">View visitor statistics</a></noscript>
+      <div id="visitor-map" class="visitor-map" data-site-id="wsgsnf13zb" aria-labelledby="visitor-map-heading">
+        <h3 id="visitor-map-heading">Recent visitor locations</h3>
+        <p class="visitor-map-note">Approximate locations, grouped when nearby. Numbers count records in the recent map sample.</p>
+        <a id="visitor-map-canvas" class="visitor-map-canvas" href="https://whos.amung.us/stats/wsgsnf13zb/" target="_blank" rel="noopener noreferrer" aria-label="World map of recent visitor locations. Open visitor statistics.">
+          <img src="./images/visitor-map-world.jpg" width="360" height="180" alt="World map">
+          <span id="visitor-map-markers" class="visitor-map-markers" aria-hidden="true"></span>
+        </a>
+        <p id="visitor-map-status" class="visitor-map-note visitor-map-status" role="status">Enable JavaScript to load visitor locations.</p>
+        <details id="visitor-map-details" class="visitor-map-details" hidden>
+          <summary>Locations and counts</summary>
+          <ul id="visitor-map-locations"></ul>
+        </details>
+        <p class="visitor-map-note"><a href="https://whos.amung.us/stats/wsgsnf13zb/" target="_blank" rel="noopener noreferrer">Visitor statistics</a> &middot; whos.amung.us</p>
+        <script defer src="./js/visitor-map.js"></script>
       </div>
 
     </div>
